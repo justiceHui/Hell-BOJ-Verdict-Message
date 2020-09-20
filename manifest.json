@@ -1,15 +1,29 @@
 {
-    "manifest_version": 2,
-    "name": "Hell BOJ Message",
-    "description": "응 아니야",
-    "version": "1.0",
-    "icons": {
+  "manifest_version": 2,
+  "name": "Hell BOJ Message",
+  "description": "응 아니야",
+  "version": "1.0",
+  "icons": {
     "128": "128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.acmicpc.net/status*",
+        "https://www.acmicpc.net/status*"
+      ],
+      "js": [
+        "boj-status.js"
+      ]
     },
-    "content_scripts": [
-        {
-          "matches": ["http://www.acmicpc.net/status*","https://www.acmicpc.net/status*"],
-          "js": ["boj-status.js"]
-        }
-    ]
+    {
+      "matches": [
+        "http://www.acmicpc.net/*",
+        "https://www.acmicpc.net/*"
+      ],
+      "js": [
+        "boj-preview.js"
+      ]
+    }
+  ]
 }

@@ -1,4 +1,3 @@
-let arr = document.getElementsByClassName("result");
 const RED = "<span class=\"result-wa \">";
 const BLUE = "<span class=\"result-ce \">";
 const GREEN = "<span class=\"result-ac \">";
@@ -13,10 +12,13 @@ const conv = {
     "출력 초과": "꼬리가 길면 잡힌다."
 };
 
-for(let i in arr){
-    let now = arr[i].innerHTML;
-    let str = arr[i].innerText;
-    if(conv[str] == undefined) continue;
-    now = now.replace(str, conv[str]);
-    arr[i].innerHTML = now;
-}
+setInterval(() => {
+    let arr = document.getElementsByClassName("result");
+    for (let i of arr) {
+        let now = i.innerHTML;
+        let str = i.innerText;
+        if (!conv[str]) continue;
+        now = now.replace(str, conv[str]);
+        i.innerHTML = now;
+    }
+}, 1000)
